@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Noticias | Egg</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/index.css">
+    </head>
+    <body style="background: white">
+        <header th:replace='/fragmentos/navbar :: header'></header>
+        <main class="main__detalle main__overlay">
+            <section>
+                <div>
+                    <a class="tittle-index" href="#">NOTICIAS EGG</a>
+                </div>
+                <div >
+                    <p  th:if="${session.usuariosession != null}" th:text=" 'Hola de vuelta '+ ${session.usuariosession.nombre} "></p>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

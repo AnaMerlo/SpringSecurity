@@ -1,0 +1,147 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10/11/2023, 10:11:02
+    Author     : aname
+*/
+body{
+    background-color: #B6C0F7;
+}
+.title{
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-family: monospace;
+}
+
+.header__ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    
+}
+.header__li{
+    list-style: none;
+    padding: 20px;
+}
+.header__a{
+    font-size: 1.2rem;
+    font-family: "Montserrat",sans-serif;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    background-color: transparent;
+    font-weight: 600;
+    text-shadow: 1px 1px black;
+}
+.header__a:hover{
+    color: #fffa3d;
+}
+.figure__grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 2rem;
+}
+.section__div{
+    background-color: #fff;
+    justify-self: center;
+    width: 300px;
+    margin: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    padding: 1.5rem;
+}
+.section__div:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 19px 0 rgb(48 44 44 / 41%);
+}
+.section__titulo{
+    padding-top: 1rem;
+    font-weight: bold;
+    font-size: 1rem;
+    font-family: "Montserrat",sans-serif;
+}
+.navbar{
+    background: black;
+}
+.padd{
+    padding: 2rem;
+}
+.figure__a{
+    text-decoration: none;
+    font-weight: bold;
+}
+.div__adm{
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 16px;
+  text-align: left;
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.table thead th {
+  background-color: #f2f2f2;
+}
+.main__detalle{
+    color: white;
+    height: 100vh;
+  text-align: center;
+  background-image: url('../img/FondoZoom_2.jpg'); /* Ruta de la imagen de fondo */
+  background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat;
+}
+.main__overlay{
+    position: relative;
+    z-index: 1;
+}
+.main__overlay::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    content: "";
+    display: block;
+    z-index: -1;
+    height: 100%;
+    background: #0000009e;
+    opacity: 0.7;
+}
+.mensajeExito{
+    width: 20%;
+    margin: auto;
+    text-align: center;
+}
+
+.mensajeError{
+    width: 20%;
+    margin: auto;
+    text-align: center;
+}
+.tittle-index{
+    display: block;
+    padding-top: 97px;
+    FONT-SIZE: 30px;
+    color: white;
+}
+.w25{
+    width: 25%;
+}
+.w100{
+    width: 100px;
+}

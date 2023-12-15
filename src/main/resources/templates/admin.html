@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Noticia | Administrador</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" href="/css/index.css">
+    </head>
+    <body>
+    <header th:replace='/fragmentos/navbar :: header'></header>
+        <main>
+            <div class="div__adm">
+                <div class="section__div">
+                <h2 class="section__titulo">Crear noticia</h2>
+                <p>Todo tipo de contenido creativo</p>
+                <a th:href="@{/noticia/registrar}" class="figure__a">Crear</a>
+            </div>
+            <div class="section__div">
+                <h2 class="section__titulo">Listar noticia</h2>
+                <p>Acceso a editar y/o eliminar contenido.</p>
+                <a th:href="@{/noticia/lista}" class="figure__a">Ver</a>
+            </div>
+            </div>
+            
+        </main>
+    </body>
+</html>

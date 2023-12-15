@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Eliminar una noticia</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <h1>Eliminar Noticia</h1>
+    
+    <p>¿Estás seguro de que deseas eliminar esta noticia?</p>
+
+    <!-- Formulario para enviar la solicitud de eliminación -->
+    <form th:action="@{/noticia/eliminar/__${noticia.id}__}" method="POST">
+        <input hidden th:value="${id}" name="id">
+                <div th:if="${error != null}">
+                    <div>
+                        <h5 >Error 👎</h5>
+                        <p  th:text="${error}"></p>
+                    </div>
+                </div>
+                <div th:if="${exito != null}" >
+                    <div >
+                        <h5 >Exito!</h5>
+                        <p th:text="${exito}"></p>
+                    </div>
+                 </div>        
+        <button type="submit" >Eliminar</button>      
+    </form>
+
+    <a th:href="@{/}">Cancelar</a>
+
+    </body>
+</html>

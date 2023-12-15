@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Registro de noticias</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="/css/formulario.css">
+    </head>
+    <body>
+        <header class="navbar">
+            <ul class="header__ul">
+                <li class="header__li">
+                    <a class="header__a" th:href="@{/noticia/admin}">Administrar noticias</a>
+                </li>
+                <li class="header__li">
+                    <a class="header__a" th:href="@{/}">Inicio</a>
+                </li>
+                <li class="header__li">
+                    <a class="header__a" th:href="@{/noticia/lista}">Listar noticias</a>
+                </li>
+            </ul>
+        </header>
+        <div class="div">
+            <form class="form" action="/noticia/registro" method="POST" id="formulario"  >
+                
+                
+                    <div th:if="${error != null}" class="mensajeError">
+                    <div>
+                        <h5 >Error 👎</h5>
+                        <p  th:text="${error}"></p>
+                    </div>
+                </div>
+                <div th:if="${exito != null}" class="mensajeExito">
+                    <div >
+                        <h5 >Exito!</h5>
+                        <p th:text="${exito}"></p>
+                    </div>
+                </div>
+                
+                
+                <label class="tittle">Cargar noticias</label>
+                <div>
+                    <input class="input" type="text" name="titulo" placeholder="Titulo de la noticia">   
+                </div> 
+                <div>
+                    <input class="input" type="text" name="cuerpo" placeholder="Cuerpo de la noticia">   
+                </div> 
+                <button class="boton" type="submit" >Guardar</button>   
+                
+            </form>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<header class="navbar">
+            <ul class="header__ul">
+                <li class="header__li">
+                    <a sec:authorize="hasAnyRole('ADMIN','PERIODISTA')" class="header__a" th:href="@{/noticia/admin}">Administrar noticias</a>
+                </li>
+                <li class="header__li">
+                    <a sec:authorize="hasRole('ADMIN')" class="header__a" th:href="@{/admin/usuarios}">Administrar Usuarios</a>
+                </li>
+                <li class="header__li">
+                    <a th:if ="${session.usuariosession != null}" class="header__a" th:href="@{/inicio}">Inicio</a>
+                </li>
+                <li class="header__li">
+                    <a th:if ="${session.usuariosession != null}" class="header__a" th:href="@{/noticia/lista}">Listar noticias</a>
+                </li>
+                <li class="header__li">
+                    <a sec:authorize="hasRole('PERIODISTA')" class="header__a" th:href="@{/admin/__${session.usuariosession.id}__/noticias}">Mis noticias</a>
+                </li>
+                <li class="header__li">
+                    <a sec:authorize="hasRole('PERIODISTA')" class="header__a" th:href="@{/admin/__${session.usuariosession.id}__/sueldo}">Sueldo</a>
+                </li>
+                <li class="header__li">
+                    <a class="header__a" href="/logout">Cerrar Sesión</a>
+                </li>
+                <li class="header__li">
+                    <a th:if="${session.usuariosession == null}" class="header__a" th:href="@{/login}">Ingresar</a>
+                </li>
+                <li class="header__li">
+                    <a th:if="${session.usuariosession == null}" class="header__a" th:href="@{/registrar}">Registro</a>
+                </li>
+                <li class="header__li">
+                    <a th:if="${session.usuariosession != null}" class="header__a" th:href="@{/perfil}">Perfil</a>
+                </li>
+                <li class="header__li">
+                    <a th:if="${session.usuariosession != null}" class="header__a"><img class="w25" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}"></a>
+                </li>
+            </ul>
+</header>

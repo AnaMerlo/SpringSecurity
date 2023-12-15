@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Lista de las noticias</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/index.css">
+    </head>
+    <body>
+        <header th:replace='/fragmentos/navbar :: header'></header>
+        <div>
+            <h1 class="title" >Lista de noticias</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="w300">Id de la noticia</th>
+                        <th scope="col" class="w300">Titulo de la noticia</th>
+                        <th scope="col" class="w300">Fecha</th>
+                        <th scope="col" class="w300" sec:authorize="hasAnyRole('ADMIN','PERIODISTA')">Acciones</th>
+                        <th scope="col" class="w300" sec:authorize="hasRole('ADMIN')">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody th:each="noticia : ${noticias}"> 
+                    <tr>
+                        <th class="w300" scope="row" th:text="${noticia.id}"></th>
+                        <td class="w300" th:text="${noticia.titulo}"></td>
+                        <td class="w300" th:text="${noticia.fecha}"></td>
+                       <!--<td class="w300" th:text="${noticia.periodista.nombre}"></td>-->
+                        <td class="w300">
+                            <a sec:authorize="hasAnyRole('ADMIN','PERIODISTA')"  th:href= "@{/noticia/modificar/__${noticia.id}__}">Modificar</a>
+                        </td>
+                        <td class="w300">
+                            <a sec:authorize="hasRole('ADMIN')" th:href= "@{/noticia/eliminar/__${noticia.id}__}">Eliminar</a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table> 
+        </div>
+        <a th:href="@{/inicio}" class="figure__a">Volver</a>
+    </body>
+</html>

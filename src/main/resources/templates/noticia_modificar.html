@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Modificar noticia</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/formulario.css">
+    </head>
+    <body>
+         <header class="navbar">
+            <ul class="header__ul">
+                <li class="header__li">
+                    <a class="header__a" th:href="@{/noticia/admin}">Administrar noticias</a>
+                </li>
+                <li class="header__li">
+                    <a class="header__a" th:href="@{/}">Inicio</a>
+                </li>
+                <li class="header__li">
+                    <a class="header__a" th:href="@{/noticia/lista}">Listar noticias</a>
+                </li>
+            </ul>
+        </header>
+        <div>
+            <form class="form" th:action="@{/noticia/modificar/__${noticia.id}__}" method="POST">
+                <input hidden th:value="${id}" name="id">
+                
+                <div th:if="${error != null}">
+                    <div>
+                        <h5 >Error 👎</h5>
+                        <p  th:text="${error}"></p>
+                    </div>
+                </div>
+                <div th:if="${exito != null}" >
+                    <div >
+                        <h5 >Exito!</h5>
+                        <p th:text="${exito}"></p>
+                    </div>
+                </div>
+                
+                <label class="tittle">Cargar noticias</label>
+                <div>
+                    <input class="input" th:value="${noticia.titulo}" type="text" name="titulo" >   
+                </div> 
+                <div>
+                    <input class="input" th:value="${noticia.cuerpo}" type="text" name="cuerpo">   
+                </div> 
+                <button class="boton" type="submit">Actualizar</button>      
+            </form>
+        </div>
+    </body>
+</html>

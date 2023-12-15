@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<header th:replace='/fragmentos/navbar :: header'></header>
+<main>
+    <div>
+        <h1 class="title" >Lista de usuarios</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col" class="w300">Id del Usuario</th>
+                <th scope="col" class="w300">Nombre</th>
+                <th scope="col" class="w300">Foto de perfil</th>
+                <th scope="col" class="w300">Rol</th>
+                <th scope="col" class="w300">Fecha</th>
+                <th scope="col" class="w300" sec:authorize="hasRole('ADMIN')">Sueldo</th>
+                <th scope="col" class="w300" sec:authorize="hasRole('ADMIN')">Sueldo anterior</th>
+                <th scope="col" class="w300" sec:authorize="hasRole('ADMIN')">Cambiar rol</th>
+
+                <th scope="col" class="w300" sec:authorize="hasRole('ADMIN')">Activo</th>
+            </tr>
+            </thead>
+            <tbody th:each="usuario : ${usuarios}">
+            <tr>
+                <th class="w300" scope="row" th:text="${usuario.id}"></th>
+                <td class="w300" th:text="${usuario.nombre}"></td>
+                <td class="w300" >
+                    <a><img class="w100" th:if="${usuario.imagen != null}" th:src="@{/imagen/perfil/__${usuario.id}__}"></a>
+                </td>
+                <td class="w300" th:text="${usuario.rol}"></td>
+                <td class="w300" th:text="${usuario.fechaAlta}"></td>
+                <td class="w300">
+                    
+                    <form th:action="@{/admin/asignarSueldo/__${usuario.id}__}" method="post">
+
+                        <input type="hidden" id="idPeriodista" name="idPeriodista" th:value="${usuario.id}" required>
+
+                        <label for="nuevoSueldo">Nuevo Sueldo:</label>
+                        <input type="text" id="nuevoSueldo" name="nuevoSueldo" required>
+
+                        <button type="submit" class="btn btn-primary">Asignar Sueldo</button>
+                    </form>
+                </td>
+
+                <td class="w300" >
+                    <span th:if="${usuario.rol == 'PERIODISTA'}" th:text="${sueldo}">
+        
+                    </span>
+                </td>
+                <td class="w300">
+                    <a sec:authorize="hasRole('ADMIN')" th:href= "@{/admin/modificarRol/__${usuario.id}__}">Cambiar rol</a>
+                </td>
+                <td class="w300">
+                    <a sec:authorize="hasRole('ADMIN')" th:href= "@{/admin/activo/__${usuario.id}__}">Activo</a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <a th:href="@{/inicio}" class="figure__a">Volver</a>
+</main>
+</body>
+</html>

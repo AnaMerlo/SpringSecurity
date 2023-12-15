@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/formulario.css">
+
+</head>
+<body>
+<header th:replace='/fragmentos/navbar :: header'></header>
+<main>
+    <div>
+        <form class="form" th:action="@{/perfil/__${usuario.id}__}" method="POST" enctype="multipart/form-data">
+            <input hidden th:value="${id}" name="id">
+
+            <div th:if="${error != null}">
+                <div>
+                    <h5 >Error 👎</h5>
+                    <p  th:text="${error}"></p>
+                </div>
+            </div>
+            <div th:if="${exito != null}" >
+                <div >
+                    <h5 >Exito!</h5>
+                    <p th:text="${exito}"></p>
+                </div>
+            </div>
+
+            <label class="tittle">Editar Usuario</label>
+            <div>
+                <input class="input" th:value="${usuario.nombre}" type="text" name="nombre" >
+            </div>
+            <div>
+                <input class="input" th:value="${usuario.email}" type="text" name="email">
+            </div>
+            <div>
+                <input class="input" type="file" name="archivo">
+            </div>
+
+            <div>
+                <input class="input" type="password" name="password" placeholder="CONTRASEÑA">
+            </div>
+            <div>
+                <input class="input" type="password" name="password2" placeholder="REPETIR CONTRASEÑA" >
+            </div>
+
+
+            <button class="boton" type="submit">Actualizar</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>

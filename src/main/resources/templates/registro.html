@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace='/fragmentos/head :: head'></head>
+<body>
+    <header th:replace='/fragmentos/navbar :: header'></header>
+<div class="div">
+    <form class="form" th:action="@{/registro}" method="POST" id="formulario" enctype="multipart/form-data" >
+
+
+        <div th:if="${error != null}" class="mensajeError">
+            <div>
+                <h5 >Error 👎</h5>
+                <p  th:text="${error}"></p>
+            </div>
+        </div>
+        <div th:if="${exito != null}" class="mensajeExito">
+            <div >
+                <h5 >Exito!</h5>
+                <p th:text="${exito}"></p>
+            </div>
+        </div>
+
+
+        <label class="tittle">Registro</label>
+        <div>
+            <input class="input" type="text" name="nombre" placeholder="NOMBRE" th:value="${nombre}">
+        </div>
+        <div>
+            <input class="input" type="email" name="email" placeholder="EMAIL" th:value="${email}">
+        </div>
+        <div>
+            <input class="input" type="file" name="archivo">
+        </div>
+        <div>
+            <input class="input" type="password" name="password" placeholder="CONTRASEÑA" th:value="${password}">
+        </div>
+        <div>
+            <input class="input" type="password" name="password2" placeholder="REPETIR CONTRASEÑA" th:value="${password2}">
+        </div>
+        <button class="boton" type="submit" >Registrarme</button>
+
+    </form>
+</div>
+</body>
+</html>

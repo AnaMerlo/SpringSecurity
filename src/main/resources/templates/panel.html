@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Panel | EggNews</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/index.css">  
+    </head>
+    <body>
+        <header th:replace='/fragmentos/navbar :: header'></header>
+        <main>
+            <h1 class ="title">Bienvenidos al sitio de Noticias de Egg</h1>
+            
+            <figure class="figure__grid">
+                <div class="section__div" th:each="noticia : ${noticias}">
+                    <h2 class="section__titulo" th:text="${noticia.titulo}"></h2>
+                    
+                    <p th:text="${noticia.fecha}"></p>
+                    <a th:href="@{/noticia/detalle/__${noticia.id}__}" class="figure__a" >Ver Detalle</a>
+                </div>
+            </figure>
+             
+            <div th:if="${error != null}" class="mensajeError">
+                <div>
+                    <h5 >Error 👎</h5>
+                    <p  th:text="${error}"></p>
+                </div>
+            </div>
+            <div th:if="${exito != null}" class="mensajeExito">
+                <div >
+                    <h5 >Exito!</h5>
+                    <p th:text="${exito}"></p>
+                </div>
+            </div>
+  
+    </main>
+    </body>
+</html>

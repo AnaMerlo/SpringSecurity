@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>EggNews</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<header th:replace='/fragmentos/navbar :: header'></header>
+<main class="main__detalle main__overlay">
+    <section>
+        <div>
+            <a class="tittle-index" th:text="'Error ' + ${codigo}">NOTICIAS EGG</a>
+            <p class="tituloLibros" th:text="${mensaje}"></p>
+        </div>
+        <div class="divVolver">
+            <a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
+        </div>
+        <div >
+            <p  th:if="${session.usuariosession != null}" th:text=" 'Hola de vuelta '+ ${session.usuariosession.nombre} "></p>
+        </div>
+    </section>
+</main>
+</body>
+</html>

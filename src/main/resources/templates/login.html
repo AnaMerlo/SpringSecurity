@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | EggNews</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/formulario.css">
+</head>
+<body>
+<header th:replace='/fragmentos/navbar :: header'></header>
+<div class="div">
+    <div th:if="${error != null}" class="mensajeError">
+            <div>
+                <h5 >Error 👎</h5>
+                <p  th:text="${error}"></p>
+            </div>
+        </div>
+        <div th:if="${exito != null}" class="mensajeExito">
+            <div >
+                <h5 >Exito!</h5>
+                <p th:text="${exito}"></p>
+            </div>
+        </div>
+    <form class="form" th:action="@{/logincheck}" method="POST">
+
+        <label class="tittle">Ingresar</label>
+        <div>
+            <input class="input" type="email" name="email" placeholder="EMAIL">
+        </div>
+        <div>
+            <input class="input" type="password" name="password" placeholder="CONTRASEÑA">
+        </div>
+
+        <button class="boton" type="submit" >Iniciar Sesión</button>
+
+    </form>
+</div>
+</body>
+</html>

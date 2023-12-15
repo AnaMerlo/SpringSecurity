@@ -1,0 +1,116 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10/11/2023, 09:27:17
+    Author     : aname
+*/
+
+body{
+    position: relative;
+    min-height: 100vh;
+    background-color: #B6C0F7;
+}
+
+
+.input {
+    width: 95%;
+    border: 1px solid #e6e6e6;
+    font-size: 0.8rem;
+    padding: 1rem;
+    outline: none;
+    border-radius: 7px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: auto;
+    height: 400px;
+    padding: 10px;
+}
+.div{
+    width: 50%;
+    margin-left: 25%;
+}
+.tittle{
+    text-align: center;
+    font-size: 2rem;
+}
+.boton {
+    background-color: #000;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    font-size: 1rem;
+    overflow: hidden;
+    padding: 16px;
+    position: relative;
+    text-decoration: none;
+    z-index: 1;
+}
+.boton:hover{
+    color: black;
+    font-weight: bold;
+
+}
+.boton::after {
+    content: "";
+    background-color: rgba(144, 177, 184, 0.651);
+    position: absolute;
+    z-index: -1;
+    padding: 10px;
+    display: block;
+    left: 0;
+    right: 0;
+    top: 100%;
+    bottom: -100%;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+}
+.boton:hover::after{
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+}
+.header__ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+.header__li{
+    list-style: none;
+    padding: 20px;
+}
+.header__a{
+    font-size: 1.2rem;
+    font-family: "Montserrat",sans-serif;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    background-color: transparent;
+    font-weight: 600;
+    text-shadow: 1px 1px black;
+}
+.navbar{
+    background: black;
+}
+.mensajeExito{
+    width: 20%;
+    margin: auto;
+    text-align: center;
+}
+
+.mensajeError{
+    width: 20%;
+    margin: auto;
+    text-align: center;
+}
